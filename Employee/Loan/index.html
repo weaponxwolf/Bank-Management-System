@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Management System - Employee Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="dashboard-container">
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 class="logo">🏦 LoanPro</h2>
+        <nav>
+            <a href="#" class="active">🏠 Dashboard</a>
+            <a href="#">📝 New Loan Application</a>
+            <a href="#">📊 Loan Status</a>
+            <a href="#">✅ Approved Loans</a>
+            <a href="#">❌ Rejected Loans</a>
+            <a href="#">🚪 Logout</a>
+        </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="main-content">
+        <header class="header">
+            <h1>Welcome, Employee</h1>
+            <p>Manage all loan applications efficiently.</p>
+        </header>
+
+        <!-- Stats Section -->
+        <section class="stats-section">
+            <div class="stat-card">
+                <h3>Total Applications</h3>
+                <p>124</p>
+            </div>
+            <div class="stat-card">
+                <h3>Approved Loans</h3>
+                <p>98</p>
+            </div>
+            <div class="stat-card">
+                <h3>Pending Approvals</h3>
+                <p>26</p>
+            </div>
+        </section>
+
+        <!-- Loan Application Form -->
+        <section class="loan-form">
+            <h2>New Loan Application</h2>
+            <form>
+                <div class="form-row">
+                    <label>Applicant Name</label>
+                    <input type="text" placeholder="Enter applicant name">
+                </div>
+                <div class="form-row">
+                    <label>Loan Amount</label>
+                    <input type="number" placeholder="Enter loan amount">
+                </div>
+                <div class="form-row">
+                    <label>Loan Type</label>
+                    <select>
+                        <option>Home Loan</option>
+                        <option>Car Loan</option>
+                        <option>Personal Loan</option>
+                    </select>
+                </div>
+                <div class="form-row">
+                    <label>Application Date</label>
+                    <input type="date">
+                </div>
+                <button type="submit">Submit Application</button>
+            </form>
+        </section>
+
+        <!-- Recent Loans Table -->
+        <section class="loan-table">
+            <h2>Recent Loan Applications</h2>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Applicant Name</th>
+                        <th>Loan Type</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Rahul Sharma</td>
+                        <td>Home Loan</td>
+                        <td>₹50,00,000</td>
+                        <td class="status approved">Approved</td>
+                    </tr>
+                    <tr>
+                        <td>Amit Kumar</td>
+                        <td>Car Loan</td>
+                        <td>₹12,00,000</td>
+                        <td class="status pending">Pending</td>
+                    </tr>
+                    <tr>
+                        <td>Priya Singh</td>
+                        <td>Personal Loan</td>
+                        <td>₹5,00,000</td>
+                        <td class="status rejected">Rejected</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
+</div>
+
+</body>
+</html>

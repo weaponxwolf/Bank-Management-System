@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Account - Bank Management System</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- Navbar (consistent with other pages) -->
+<nav class="navbar">
+    <div class="logo">Bank Management System</div>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Employees</a></li>
+        <li><a href="#">Admin</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <h2>Create New Bank Account</h2>
+    <p class="form-description">As a customer, please provide the following details to create your account.</p>
+
+    <form id="createAccountForm">
+        <div class="form-group">
+            <label for="ssn">Customer SSN No (7 digits):</label>
+            <input type="text" id="ssn" maxlength="7" required>
+        </div>
+
+        <div class="form-group">
+            <label for="name">Customer Name (Max 50 characters):</label>
+            <input type="text" id="name" maxlength="50" required>
+        </div>
+
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" required>
+        </div>
+
+        <div class="form-group">
+            <label for="address">Address (Max 100 characters):</label>
+            <textarea id="address" maxlength="100" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label for="contact">Contact Number (10 digits):</label>
+            <input type="text" id="contact" maxlength="10" required>
+        </div>
+
+        <div class="form-group">
+            <label for="aadhar">Aadhar Number (12 digits):</label>
+            <input type="text" id="aadhar" maxlength="12" required>
+        </div>
+
+        <div class="form-group">
+            <label for="pan">PAN Number (Max 10 characters):</label>
+            <input type="text" id="pan" maxlength="10" required>
+        </div>
+
+        <div class="form-group">
+            <label for="accountNumber">Account Number (Max 20 characters):</label>
+            <input type="text" id="accountNumber" maxlength="20" required>
+        </div>
+
+        <div class="form-group">
+            <label for="accountType">Account Type:</label>
+            <select id="accountType" required>
+                <option value="">Select Account Type</option>
+                <option value="Saving">Saving</option>
+                <option value="Current">Current</option>
+                <option value="Salary">Salary</option>
+            </select>
+        </div>
+
+        <button type="button" onclick="createAccount()">Create Account</button>
+    </form>
+
+    <p id="ackMessage" class="acknowledgment"></p>
+</div>
+
+<script>
+    const customerList = [];
+
+    function createAccount() {
+        const customer = {
+            ssn: document.getElementById('ssn').value,
+            name: document.getElementById('name').value,
+            email: document.getElementById('email').value,
+            address: document.getElementById('address').value,
+            contact: document.getElementById('contact').value,
+            aadhar: document.getElementById('aadhar').value,
+            pan: document.getElementById('pan').value,
+            accountNumber: document.getElementById('accountNumber').value,
+            accountType: document.getElementById('accountType').value,
+            initialDeposit: parseFloat(document.getElementById('initialDeposit').value),
+        };
+
+        customerList.push(customer);  // Add to in-memory collection (simulation)
+
+        const ackMessage = document.getElementById('ackMessage');
+        ackMessage.innerText = "Account is created successfully.";
+        ackMessage.style.color = "green";
+
+        console.log("New Customer Added:", customer);
+        console.log("All Customers List:", customerList);
+
+        document.getElementById('createAccountForm').reset();
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Registration</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <section class="container">
+        <header>Employee Registration Form</header>
+        <form id="registrationForm" class="form">
+            <div class="input-box">
+                <label>First Name</label>
+                <input type="text" id="firstName" placeholder="Enter First Name" maxlength="50" required />
+            </div>
+
+            <div class="input-box">
+                <label>Last Name</label>
+                <input type="text" id="lastName" placeholder="Enter Last Name" maxlength="50" required />
+            </div>
+
+            <div class="input-box">
+                <label>Email</label>
+                <input type="email" id="email" placeholder="Enter Email" required />
+            </div>
+
+            <div class="input-box">
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter Password" maxlength="30" required />
+            </div>
+
+            <div class="input-box">
+                <label>Confirm Password</label>
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" maxlength="30" required />
+            </div>
+
+            <div class="input-box">
+                <label>Address</label>
+                <textarea id="address" placeholder="Enter Address (Max 100 characters)" maxlength="100" required></textarea>
+            </div>
+
+            <div class="input-box">
+                <label>Contact Number</label>
+                <input type="text" id="contactNumber" placeholder="Enter Contact Number" maxlength="10" required />
+            </div>
+
+            <button type="button" onclick="registerEmployee()">Register</button>
+        </form>
+    </section>
+
+    <script src="script.js"></script>
+</body>
+</html>

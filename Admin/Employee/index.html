@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Employee Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    Admin Employee Management Dashboard
+</div>
+
+<div class="dashboard">
+    <div class="card blue">
+        <h3>Total Employees</h3>
+        <p id="employeeCount">5</p>
+    </div>
+    <div class="card green">
+        <h3>Departments</h3>
+        <p id="departmentCount">5</p>
+    </div>
+    <div class="card red">
+        <h3>On Leave Today</h3>
+        <p id="onLeaveCount">3</p>
+    </div>
+    <div class="card orange">
+        <h3>Permanent Staff</h3>
+        <p id="permanentCount">15</p>
+    </div>
+    <div class="card purple">
+        <h3>Contract Staff</h3>
+        <p id="contractCount">5</p>
+    </div>
+</div>
+
+<div class="filters">
+    <div class="filter-group">
+        <select id="searchColumn">
+            <option value="all">Search All Columns</option>
+            <option value="0">Employee ID</option>
+            <option value="1">Employee Name</option>
+            <option value="2">Department</option>
+            <option value="3">Contact Number</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Search here..." onkeyup="filterTable()">
+        <a href="./New/index.html"><button class="add-btn">➕ Add Employee</button></a>
+    </div>
+</div>
+
+<div class="table-container">
+    <table id="employeeTable">
+        <thead>
+            <tr>
+                <th>Employee ID</th>
+                <th>Employee Name</th>
+                <th>Department</th>
+                <th>Contact Number</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>EMP001</td><td>Amit Roy</td><td>Finance</td><td>9876543210</td><td><a href="./View/index.html" class="btn-view">View</a></td></tr>
+            <tr><td>EMP002</td><td>Priya Sen</td><td>HR</td><td>9123456780</td><td><a href="./View/index.html" class="btn-view">View</a></td></tr>
+            <tr><td>EMP003</td><td>Rahul Gupta</td><td>IT</td><td>9876501234</td><td><a href="./View/index.html" class="btn-view">View</a></td></tr>
+            <tr><td>EMP004</td><td>Neha Kapoor</td><td>Operations</td><td>9345678912</td><td><a href="./View/index.html" class="btn-view">View</a></td></tr>
+            <tr><td>EMP005</td><td>Vikram Das</td><td>Marketing</td><td>9001234567</td><td><a href="./View/index.html" class="btn-view">View</a></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<!-- Add Employee Modal -->
+<!-- <div class="modal" id="addEmployeeModal">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeAddEmployeeModal()">×</span>
+        <h2>Add New Employee</h2>
+        <input type="text" id="newEmployeeID" placeholder="Employee ID">
+        <input type="text" id="newEmployeeName" placeholder="Employee Name">
+        <input type="text" id="newDepartment" placeholder="Department">
+        <input type="text" id="newContactNumber" placeholder="Contact Number">
+        <button class="primary-btn" onclick="addEmployee()">✅ Add Employee</button>
+    </div>
+</div> -->
+
+<script>
+    function filterTable() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const searchColumn = document.getElementById('searchColumn').value;
+        const rows = document.querySelectorAll('#employeeTable tbody tr');
+
+        rows.forEach(row => {
+            const cells = row.getElementsByTagName('td');
+            let showRow = false;
+
+            if (searchColumn === "all") {
+                for (let i = 0; i < cells.length; i++) {
+                    if (cells[i].textContent.toLowerCase().includes(input)) {
+                        showRow = true;
+                        break;
+                    }
+                }
+            } else {
+                const columnText = cells[parseInt(searchColumn)].textContent.toLowerCase();
+                showRow = columnText.includes(input);
+            }
+
+            row.style.display = showRow ? '' : 'none';
+        });
+    }
+
+    // function openAddEmployeeModal() {
+    //     document.getElementById("addEmployeeModal").style.display = "flex";
+    // }
+
+    // function closeAddEmployeeModal() {
+    //     document.getElementById("addEmployeeModal").style.display = "none";
+    // }
+
+    // function addEmployee() {
+    //     const tableBody = document.querySelector("#employeeTable tbody");
+    //     const newRow = document.createElement("tr");
+
+    //     const id = document.getElementById("newEmployeeID").value;
+    //     const name = document.getElementById("newEmployeeName").value;
+    //     const department = document.getElementById("newDepartment").value;
+    //     const contact = document.getElementById("newContactNumber").value;
+
+    //     if (!id || !name || !department || !contact) {
+    //         alert("Please fill all fields!");
+    //         return;
+    //     }
+
+    //     newRow.innerHTML = `
+    //         <td>${id}</td>
+    //         <td>${name}</td>
+    //         <td>${department}</td>
+    //         <td>${contact}</td>
+    //         <td><a href="#" class="btn-view">View</a></td>
+    //     `;
+
+    //     tableBody.appendChild(newRow);
+    //     document.getElementById("employeeCount").textContent = tableBody.rows.length;
+
+    //     closeAddEmployeeModal();
+    // }
+</script>
+
+</body>
+</html>

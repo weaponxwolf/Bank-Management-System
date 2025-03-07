@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard - Loan Management System</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <h2 class="logo">🏦 AdminPro</h2>
+        <nav>
+            <a href="#" class="active">🏠 Dashboard</a>
+            <a href="./Customer/index.html">👥 Customers Management</a>
+            <a href="./Employee/index.html">👨‍💼 Employees Management</a>
+            <a href="#">💰 Loans Management</a>
+            <a href="#">🚪 Logout</a>
+        </nav>
+    </aside>
+
+    <div class="dashboard-container">
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+            <header class="header">
+                <h1>Welcome, Admin</h1>
+                <p>Manage customers, employees, and loans efficiently.</p>
+            </header>
+
+            <!-- Stats Cards Section -->
+            <section class="stats-section">
+                <div class="stat-card">
+                    <h3>Total Customers</h3>
+                    <p>150</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Total Employees</h3>
+                    <p>20</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Active Loans</h3>
+                    <p>75</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Saving Accounts</h3>
+                    <p>90</p>
+                </div>
+                <div class="stat-card">
+                    <h3>Current Accounts</h3>
+                    <p>60</p>
+                </div>
+            </section>
+
+            <!-- Recently Registered Customers -->
+            <section class="management-table">
+                <h2>Recently Registered Customers</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Email</th>
+                            <th>Account Type</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rahul Sharma</td>
+                            <td>rahul@example.com</td>
+                            <td>Saving</td>
+                            <td class="status active">Active</td>
+                        </tr>
+                        <tr>
+                            <td>Pooja Singh</td>
+                            <td>pooja@example.com</td>
+                            <td>Current</td>
+                            <td class="status active">Active</td>
+                        </tr>
+                        <tr>
+                            <td>Amit Kumar</td>
+                            <td>amit@example.com</td>
+                            <td>Saving</td>
+                            <td class="status inactive">Inactive</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Recently Registered Employees -->
+            <section class="management-table">
+                <h2>Recently Registered Employees</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Employee Name</th>
+                            <th>Department</th>
+                            <th>Email</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Vikram Roy</td>
+                            <td>Loan Department</td>
+                            <td>vikram@example.com</td>
+                            <td class="status active">Active</td>
+                        </tr>
+                        <tr>
+                            <td>Neha Verma</td>
+                            <td>Customer Service</td>
+                            <td>neha@example.com</td>
+                            <td class="status active">Active</td>
+                        </tr>
+                        <tr>
+                            <td>Rajesh Gupta</td>
+                            <td>HR</td>
+                            <td>rajesh@example.com</td>
+                            <td class="status inactive">Inactive</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <!-- Recent Loans Table -->
+            <section class="loan-table">
+                <h2>Recent Loan Applications</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Applicant Name</th>
+                            <th>Loan Type</th>
+                            <th>Amount</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Rahul Sharma</td>
+                            <td>Home Loan</td>
+                            <td>₹50,00,000</td>
+                            <td class="status approved">Approved</td>
+                        </tr>
+                        <tr>
+                            <td>Amit Kumar</td>
+                            <td>Car Loan</td>
+                            <td>₹12,00,000</td>
+                            <td class="status pending">Pending</td>
+                        </tr>
+                        <tr>
+                            <td>Priya Singh</td>
+                            <td>Personal Loan</td>
+                            <td>₹5,00,000</td>
+                            <td class="status rejected">Rejected</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+        </main>
+
+    </div>
+
+</body>
+
+</html>

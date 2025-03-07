@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Customer Management Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<div class="header">
+    Admin Customer Management Dashboard
+</div>
+
+<div class="dashboard">
+    <div class="card blue">
+        <h3>Number of Customers</h3>
+        <p id="customerCount">5</p>
+    </div>
+    <div class="card green">
+        <h3>Number of Employees</h3>
+        <p id="employeeCount">20</p>
+    </div>
+    <div class="card red">
+        <h3>Active Loans</h3>
+        <p id="loanCount">8</p>
+    </div>
+    <div class="card orange">
+        <h3>Saving Accounts</h3>
+        <p id="savingAccountCount">3</p>
+    </div>
+    <div class="card purple">
+        <h3>Current Accounts</h3>
+        <p id="currentAccountCount">3</p>
+    </div>
+</div>
+
+<div class="filters">
+    <div class="filter-group">
+        <select id="searchColumn">
+            <option value="all">Search All Columns</option>
+            <option value="0">Customer SSN</option>
+            <option value="1">Customer Name</option>
+            <option value="2">Email ID</option>
+            <option value="3">Contact Number</option>
+            <option value="4">Account Number</option>
+            <option value="5">Account Type</option>
+        </select>
+        <input type="text" id="searchInput" placeholder="Search here..." onkeyup="filterTable()">
+    </div>
+</div>
+
+<div class="table-container">
+    <table id="customerTable">
+        <thead>
+            <tr>
+                <th>Customer SSN</th>
+                <th>Customer Name</th>
+                <th>Email ID</th>
+                <th>Contact Number</th>
+                <th>Account Number</th>
+                <th>Account Type</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr><td>123-45-6789</td><td>Amit Roy</td><td>amitroy@email.com</td><td>9876543210</td><td>AC001</td><td>Saving</td><td><a href="./View/index.html" class="btn-view">View</a></td></tr>
+            <tr><td>123-45-6789</td><td>Amit Roy</td><td>amitroy@email.com</td><td>9876543210</td><td>AC002</td><td>Current</td><td><a href="./View/index.html" class="btn-view">View</a></td></tr>
+            <tr><td>987-65-4321</td><td>Priya Sen</td><td>priyas@email.com</td><td>9123456780</td><td>AC003</td><td>Saving</td><td><a href="./View/index.html" class="btn-view">View</a></td></tr>
+            <tr><td>567-89-0123</td><td>Rahul Gupta</td><td>rahulg@email.com</td><td>9876501234</td><td>AC004</td><td>Saving</td><td><a href="./View/index.html" class="btn-view">View</a></td></tr>
+            <tr><td>456-78-9012</td><td>Neha Kapoor</td><td>nehak@email.com</td><td>9345678912</td><td>AC005</td><td>Current</td><td><a href="./View/index.html" class="btn-view">View</a></td></tr>
+        </tbody>
+    </table>
+</div>
+
+<script>
+    function filterTable() {
+        const input = document.getElementById('searchInput').value.toLowerCase();
+        const searchColumn = document.getElementById('searchColumn').value;
+        const rows = document.querySelectorAll('#customerTable tbody tr');
+
+        rows.forEach(row => {
+            const cells = row.getElementsByTagName('td');
+            let showRow = false;
+
+            if (searchColumn === "all") {
+                for (let i = 0; i < cells.length; i++) {
+                    if (cells[i].textContent.toLowerCase().includes(input)) {
+                        showRow = true;
+                        break;
+                    }
+                }
+            } else {
+                const columnText = cells[parseInt(searchColumn)].textContent.toLowerCase();
+                showRow = columnText.includes(input);
+            }
+
+            row.style.display = showRow ? '' : 'none';
+        });
+    }
+</script>
+
+</body>
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Dashboard - Bank Management System</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">Bank Management System</div>
+    <ul class="nav-links">
+        <li><a href="#">Dashboard</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Dashboard Section -->
+<div class="dashboard-container">
+    <h2>Employee Dashboard</h2>
+
+    <div class="dashboard-grid">
+
+        <!-- Personal Information -->
+        <div class="dashboard-card" onclick="location.href='./Personal/index.html';">
+            <img src="https://img.icons8.com/ios/50/user.png" alt="Personal Info">
+            <p>Personal Information</p>
+        </div>
+
+        <!-- Customer Details -->
+        <div class="dashboard-card" onclick="location.href='./Customer/index.html';">
+            <img src="https://img.icons8.com/ios/50/conference.png" alt="Customer Details">
+            <p>Customer Management</p>
+        </div>
+
+        <!-- Loan Management -->
+        <div class="dashboard-card" onclick="location.href='#';">
+            <img src="https://img.icons8.com/ios-filled/100/money-bag.png" alt="Loan Management">
+            <p>Loan Management</p>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

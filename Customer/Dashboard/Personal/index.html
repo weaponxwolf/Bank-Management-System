@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Personal Information - Bank Management System</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar">
+    <div class="logo">Bank Management System</div>
+    <ul class="nav-links">
+        <li><a href="../index.html">Home</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Transactions</a></li>
+        <li><a href="#">Logout</a></li>
+    </ul>
+</nav>
+
+<!-- Main Section -->
+<div class="container">
+    <h2>Personal Information</h2>
+    <p class="description">View and update your personal details.</p>
+
+    <table id="infoTable" class="info-table">
+        <tr><td>Customer SSN No:</td><td id="ssnNo">1234567</td></tr>
+        <tr><td>Customer Name:</td><td id="customerName">John Doe</td></tr>
+        <tr><td>Email:</td><td id="email">john.doe@example.com</td></tr>
+        <tr><td>Date of Birth:</td><td id="dob">1990-01-01</td></tr>
+        <tr><td>Gender:</td><td id="gender">Male</td></tr>
+        <tr><td>Marital Status:</td><td id="maritalStatus">Single</td></tr>
+        <tr><td>Address:</td><td id="address">123 Main Street, Cityville</td></tr>
+        <tr><td>Contact Number:</td><td id="contactNumber">9876543210</td></tr>
+        <tr><td>Aadhaar Number:</td><td id="aadhaarNumber">123412341234</td></tr>
+        <tr><td>PAN Number:</td><td id="panNumber">ABCDE1234F</td></tr>
+    </table>
+
+    <button id="updateButton" onclick="enableEditing()">Update Information</button>
+
+    <!-- Editable Form -->
+    <form id="updateForm" style="display:none;">
+        <div class="form-group"><label>Customer Name:</label><input type="text" id="editCustomerName"></div>
+        <div class="form-group"><label>Email:</label><input type="email" id="editEmail"></div>
+        <div class="form-group"><label>Date of Birth:</label><input type="date" id="editDOB"></div>
+        <div class="form-group">
+            <label>Gender:</label>
+            <select id="editGender">
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+                <option value="Other">Other</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Marital Status:</label>
+            <select id="editMaritalStatus">
+                <option value="Single">Single</option>
+                <option value="Married">Married</option>
+                <option value="Divorced">Divorced</option>
+            </select>
+        </div>
+        <div class="form-group"><label>Address:</label><textarea id="editAddress"></textarea></div>
+        <div class="form-group"><label>Contact Number:</label><input type="text" id="editContactNumber"></div>
+
+        <button type="button" onclick="submitUpdatedInfo()">Submit</button>
+        <p id="message" class="message"></p>
+    </form>
+</div>
+
+<script>
+    function enableEditing() {
+        document.getElementById('infoTable').style.display = 'none';
+        document.getElementById('updateButton').style.display = 'none';
+        document.getElementById('updateForm').style.display = 'block';
+
+        document.getElementById('editCustomerName').value = document.getElementById('customerName').innerText;
+        document.getElementById('editEmail').value = document.getElementById('email').innerText;
+        document.getElementById('editDOB').value = document.getElementById('dob').innerText;
+        document.getElementById('editGender').value = document.getElementById('gender').innerText;
+        document.getElementById('editMaritalStatus').value = document.getElementById('maritalStatus').innerText;
+        document.getElementById('editAddress').value = document.getElementById('address').innerText;
+        document.getElementById('editContactNumber').value = document.getElementById('contactNumber').innerText;
+    }
+
+    function submitUpdatedInfo() {
+        document.getElementById('customerName').innerText = document.getElementById('editCustomerName').value;
+        document.getElementById('email').innerText = document.getElementById('editEmail').value;
+        document.getElementById('dob').innerText = document.getElementById('editDOB').value;
+        document.getElementById('gender').innerText = document.getElementById('editGender').value;
+        document.getElementById('maritalStatus').innerText = document.getElementById('editMaritalStatus').value;
+        document.getElementById('address').innerText = document.getElementById('editAddress').value;
+        document.getElementById('contactNumber').innerText = document.getElementById('editContactNumber').value;
+
+        document.getElementById('infoTable').style.display = 'table';
+        document.getElementById('updateButton').style.display = 'inline-block';
+        document.getElementById('updateForm').style.display = 'none';
+
+        document.getElementById('message').innerText = 'Personal Information updated successfully!';
+        document.getElementById('message').style.color = 'green';
+    }
+</script>
+
+</body>
+</html>

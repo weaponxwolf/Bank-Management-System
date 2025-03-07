@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee Personal Information - Bank Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">🏦 Bank Management System</div>
+    <ul class="nav-links">
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Customers</a></li>
+        <li><a href="#">Transactions</a></li>
+        <li><a href="#">Logout</a></li>
+    </ul>
+</nav>
+
+<div class="container">
+    <div class="card">
+        <h2>👤 Employee Personal Information</h2>
+        <p class="subtitle">Manage your profile details</p>
+
+        <table class="info-table">
+            <tr><td>Employee ID:</td><td id="employeeId">EMP001</td></tr>
+            <tr><td>Name:</td><td id="employeeName">Rahul Sharma</td></tr>
+            <tr><td>Email:</td><td id="email">rahul.sharma@bank.com</td></tr>
+            <tr><td>Designation:</td><td id="designation">Relationship Manager</td></tr>
+            <tr><td>Department:</td><td id="department">Customer Service</td></tr>
+            <tr><td>Contact Number:</td><td id="contactNumber">9988776655</td></tr>
+        </table>
+
+        <button class="primary-btn" onclick="openUpdateForm()">✏️ Update Personal Information</button>
+    </div>
+
+    <div class="card form-card" id="updateForm" style="display: none;">
+        <h3>Update Personal Information</h3>
+        <form>
+            <input type="text" id="editEmployeeName" placeholder="Name">
+            <input type="email" id="editEmail" placeholder="Email">
+            <input type="text" id="editDesignation" placeholder="Designation">
+            <input type="text" id="editDepartment" placeholder="Department">
+            <input type="text" id="editContactNumber" placeholder="Contact Number">
+            <button type="button" class="primary-btn" onclick="submitUpdatedInfo()">✅ Save Changes</button>
+            <button type="button" class="secondary-btn" onclick="closeUpdateForm()">❌ Cancel</button>
+        </form>
+    </div>
+
+    <div class="card">
+        <h2>💼 Salary Account Information</h2>
+        <p class="subtitle">Linked salary accounts</p>
+
+        <table class="info-table">
+            <thead>
+                <tr>
+                    <th>Account No.</th>
+                    <th>Bank Name</th>
+                    <th>IFSC</th>
+                    <th>Opening Date</th>
+                    <th>Balance</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="accountTableBody">
+                <tr>
+                    <td>1111222233</td>
+                    <td>HDFC Bank</td>
+                    <td>HDFC0001234</td>
+                    <td>15-Mar-2022</td>
+                    <td>₹2,50,000</td>
+                    <td><button class="delete-btn" onclick="deleteAccount(this)">❌ Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button class="primary-btn" onclick="showAddAccountForm()">➕ Add New Account</button>
+
+        <div class="form-card" id="createAccountForm" style="display: none;">
+            <h3>Add New Salary Account</h3>
+            <input type="text" id="accountNumber" placeholder="Account Number">
+            <input type="text" id="bankName" placeholder="Bank Name">
+            <input type="text" id="ifscCode" placeholder="IFSC Code">
+            <input type="date" id="openingDate">
+            <input type="text" id="balance" placeholder="Balance">
+            <button class="primary-btn" onclick="addAccount()">✅ Add Account</button>
+        </div>
+    </div>
+</div>
+
+<script>
+function openUpdateForm() {
+    document.getElementById('updateForm').style.display = 'block';
+    document.getElementById('editEmployeeName').value = document.getElementById('employeeName').innerText;
+    document.getElementById('editEmail').value = document.getElementById('email').innerText;
+    document.getElementById('editDesignation').value = document.getElementById('designation').innerText;
+    document.getElementById('editDepartment').value = document.getElementById('department').innerText;
+    document.getElementById('editContactNumber').value = document.getElementById('contactNumber').innerText;
+}
+
+function closeUpdateForm() {
+    document.getElementById('updateForm').style.display = 'none';
+}
+
+function submitUpdatedInfo() {
+    ['employeeName', 'email', 'designation', 'department', 'contactNumber'].forEach(field => {
+        document.getElementById(field).innerText = document.getElementById('edit' + capitalize(field)).value;
+    });
+    closeUpdateForm();
+    alert("Personal Information Updated Successfully!");
+}
+
+function showAddAccountForm() {
+    document.getElementById('createAccountForm').style.display = 'block';
+}
+
+function addAccount() {
+    const tableBody = document.getElementById('accountTableBody');
+    const row = tableBody.insertRow();
+    ['accountNumber', 'bankName', 'ifscCode', 'openingDate', 'balance'].forEach((id, index) => {
+        row.insertCell(index).innerText = document.getElementById(id).value;
+    });
+
+    const actionCell = row.insertCell(5);
+    actionCell.innerHTML = '<button class="delete-btn" onclick="deleteAccount(this)">❌ Delete</button>';
+    document.getElementById('createAccountForm').style.display = 'none';
+}
+
+function deleteAccount(button) {
+    button.closest('tr').remove();
+}
+
+function capitalize(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+}
+</script>
+
+</body>
+</html>

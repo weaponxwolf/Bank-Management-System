@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Management System</title>
+    <link rel="stylesheet" href="./style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🏦 Bank Management System</div>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Customers</a></li>
+            <li><a href="#">Transactions</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+
+    <!-- Personal Information Section -->
+    <section class="card">
+        <h2>👤 Customer Information</h2>
+        <p class="description">Your registered personal details.</p>
+
+        <table class="info-table" id="infoTable">
+            <tr>
+                <td>Customer SSN No:</td>
+                <td id="ssnNo">1234567</td>
+            </tr>
+            <tr>
+                <td>Customer Name:</td>
+                <td id="customerName">John Doe</td>
+            </tr>
+            <tr>
+                <td>Email:</td>
+                <td id="email">john.doe@example.com</td>
+            </tr>
+            <tr>
+                <td>Address:</td>
+                <td id="address">123 Main Street, Cityville</td>
+            </tr>
+            <tr>
+                <td>Contact Number:</td>
+                <td id="contactNumber">9876543210</td>
+            </tr>
+            <tr>
+                <td>Aadhaar Number:</td>
+                <td id="aadhaarNumber">123412341234</td>
+            </tr>
+            <tr>
+                <td>PAN Number:</td>
+                <td id="panNumber">ABCDE1234F</td>
+            </tr>
+        </table>
+
+        <button id="updateButton" onclick="enableEditing()">✏️ Update Information</button>
+
+        <form id="updateForm" style="display: none;">
+            <div class="form-group"><label>Name</label><input type="text" id="editCustomerName"></div>
+            <div class="form-group"><label>Email</label><input type="email" id="editEmail"></div>
+            <div class="form-group"><label>Address</label><textarea id="editAddress"></textarea></div>
+            <div class="form-group"><label>Contact Number</label><input type="text" id="editContactNumber"></div>
+            <button type="button" onclick="submitUpdatedInfo()">💾 Save Changes</button>
+            <p id="message" class="message"></p>
+        </form>
+    </section>
+
+    <!-- Account Information Section -->
+    <section class="card">
+        <h2>💼 Account Information</h2>
+        <p class="description">Details of all linked accounts.</p>
+
+        <table class="info-table">
+            <thead>
+                <tr>
+                    <th>Account No.</th>
+                    <th>Account Type</th>
+                    <th>Branch</th>
+                    <th>IFSC</th>
+                    <th>Opening Date</th>
+                    <th>Balance</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="accountTableBody">
+                <tr>
+                    <td>1234567890</td>
+                    <td>Savings</td>
+                    <td>Main Branch</td>
+                    <td>BKID0001234</td>
+                    <td>15-Jan-2022</td>
+                    <td>₹2,50,000</td>
+                    <td><button onclick="deleteAccount(this)">❌ Delete</button></td>
+                </tr>
+                <tr>
+                    <td>9876543210</td>
+                    <td>Current</td>
+                    <td>Delhi Branch</td>
+                    <td>HDFC0005678</td>
+                    <td>10-Mar-2023</td>
+                    <td>₹1,75,000</td>
+                    <td><button onclick="deleteAccount(this)">❌ Delete</button></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <button onclick="showCreateAccountForm()">➕ Create New Account</button>
+
+        <form id="createAccountForm" style="display: none; margin-top: 20px;">
+            <div class="form-group"><label>Account Number</label><input type="text" id="accountNumber"></div>
+            <div class="form-group"><label>Account Type</label><input type="text" id="accountType"></div>
+            <div class="form-group"><label>Branch</label><input type="text" id="branch"></div>
+            <div class="form-group"><label>IFSC Code</label><input type="text" id="ifscCode"></div>
+            <div class="form-group"><label>Opening Date</label><input type="date" id="openingDate"></div>
+            <div class="form-group"><label>Balance</label><input type="text" id="balance"></div>
+            <button type="button" onclick="addAccount()">💾 Add Account</button>
+        </form>
+    </section>
+
+    <script>
+        function enableEditing() {
+            document.getElementById('infoTable').style.display = 'none';
+            document.getElementById('updateButton').style.display = 'none';
+            document.getElementById('updateForm').style.display = 'block';
+
+            document.getElementById('editCustomerName').value = document.getElementById('customerName').innerText;
+            document.getElementById('editEmail').value = document.getElementById('email').innerText;
+            document.getElementById('editAddress').value = document.getElementById('address').innerText;
+            document.getElementById('editContactNumber').value = document.getElementById('contactNumber').innerText;
+        }
+
+        function submitUpdatedInfo() {
+            document.getElementById('customerName').innerText = document.getElementById('editCustomerName').value;
+            document.getElementById('email').innerText = document.getElementById('editEmail').value;
+            document.getElementById('address').innerText = document.getElementById('editAddress').value;
+            document.getElementById('contactNumber').innerText = document.getElementById('editContactNumber').value;
+
+            document.getElementById('infoTable').style.display = 'table';
+            document.getElementById('updateButton').style.display = 'block';
+            document.getElementById('updateForm').style.display = 'none';
+
+            document.getElementById('message').innerText = '✅ Information Updated!';
+        }
+
+        function showCreateAccountForm() {
+            document.getElementById('createAccountForm').style.display = 'block';
+        }
+
+        function addAccount() {
+            const tableBody = document.getElementById('accountTableBody');
+            const newRow = tableBody.insertRow();
+
+            const fields = ['accountNumber', 'accountType', 'branch', 'ifscCode', 'openingDate', 'balance'];
+            fields.forEach((field, index) => {
+                const cell = newRow.insertCell(index);
+                cell.innerText = document.getElementById(field).value;
+            });
+
+            const actionCell = newRow.insertCell(fields.length);
+            actionCell.innerHTML = '<button onclick="deleteAccount(this)">❌ Delete</button>';
+
+            document.getElementById('createAccountForm').reset();
+            document.getElementById('createAccountForm').style.display = 'none';
+        }
+
+        function deleteAccount(button) {
+            const row = button.closest('tr');
+            row.remove();
+        }
+    </script>
+
+</body>
+
+</html>
