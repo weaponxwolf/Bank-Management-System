@@ -5,8 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Deposit Money - Bank Management System</title>
-    <link rel="stylesheet" href="../../css/Customer/deposit.css">
-    <link rel="stylesheet" href="../../css/Customer/common.css">
+    <link rel="stylesheet" href="../../css/customer.css">
 </head>
 
 <body>
@@ -93,17 +92,16 @@
             if (isNaN(depositAmount) || depositAmount <= 0) {
                 messageEl.innerText = "Please enter a valid deposit amount.";
                 messageEl.style.color = "red";
+                messageEl.classList.add("text-center");
                 return;
             }
-
             const updatedBalance = currentBalance + depositAmount;
-
-            // Simulate update (in actual implementation, balance would be updated in backend)
             accountBalances[accountNumber] = updatedBalance;
-
             messageEl.innerText = "Deposit Successful!";
             messageEl.style.color = "green";
+            messageEl.classList.add("text-center");
             updatedBalanceEl.innerText = `Updated Balance: ₹${updatedBalance.toFixed(2)}`;
+            updatedBalanceEl.classList.add("text-center");
         }
     </script>
 
