@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Account Details - Bank Management System</title>
+    <link rel="stylesheet" href="../../css/customer.css" />
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🏦 Bank Management System</div>
+        <ul class="nav-links">
+            <li><a href="../Dashboard/">Dashboard</a></li>
+            <li><a href="../Balance/">Balance</a></li>
+            <li><a href="../Transactions/" class="active-link">Transactions</a></li>
+            <li><a href="../Accounts/">Accounts</a></li>
+            <li><a href="../Profile/">Profile</a></li>
+        </ul>
+    </nav>
+
+
+    <div class="container-75">
+        <h2>Transaction History</h2>
+
+        <!-- Filters Section -->
+        <div class="filters">
+            <input type="date" id="fromDate" placeholder="From Date">
+            <input type="date" id="toDate" placeholder="To Date">
+            <select id="transactionType">
+                <option value="All">All Transactions</option>
+                <option value="Credit">Credit</option>
+                <option value="Debit">Debit</option>
+            </select>
+            <input type="number" id="minAmount" placeholder="Min Amount">
+            <input type="number" id="maxAmount" placeholder="Max Amount">
+            <input type="text" id="transactionId" placeholder="Transaction ID">
+            <button style="width: 180px;" onclick="filterTransactions()">Search</button>
+        </div>
+
+        <!-- Transactions Table -->
+        <table>
+            <thead>
+                <tr>
+                    <th>Date</th>
+                    <th>Description</th>
+                    <th>Type</th>
+                    <th>Amount</th>
+                    <th>Balance</th>
+                    <th>Payee</th>
+                    <th>Payment Mode</th>
+                    <th>Transaction Status</th>
+                    <th>Reference ID</th>
+                </tr>
+            </thead>
+            <tbody id="transactionTable">
+                <tr>
+                    <td>2025-02-01</td>
+                    <td>Salary Credit</td>
+                    <td>Credit</td>
+                    <td>₹50,000</td>
+                    <td>₹2,50,000</td>
+                    <td>-</td>
+                    <td>Bank Transfer</td>
+                    <td>Successful</td>
+                    <td>TRX123456</td>
+                </tr>
+                <tr>
+                    <td>2025-02-10</td>
+                    <td>Electricity Bill</td>
+                    <td>Debit</td>
+                    <td>₹2,500</td>
+                    <td>₹2,47,500</td>
+                    <td>WBSEDCL</td>
+                    <td>UPI</td>
+                    <td>Successful</td>
+                    <td>TRX123457</td>
+                </tr>
+                <!-- Add more rows as needed -->
+            </tbody>
+        </table>
+
+        <!-- Download Section -->
+        <div class="download-section">
+            <button style="width: 180px;" onclick="downloadPDF()">Download Statement (PDF)</button>
+        </div>
+    </div>
+
+    <!-- Basic Filter Logic - Placeholder -->
+    <script>
+        function filterTransactions() {
+            alert('Filtering logic will be implemented here.');
+            // You can add actual filtering logic using JavaScript to filter table rows based on filter values.
+        }
+
+        function downloadPDF() {
+            alert('PDF download logic will be implemented here.');
+            // You can integrate a library like jsPDF or html2pdf for actual PDF generation.
+        }
+    </script>
+
+</body>
+
+</html>

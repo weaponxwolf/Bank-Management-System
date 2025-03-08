@@ -1,78 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Check Balance - Bank Management System</title>
     <link rel="stylesheet" href="../../css/customer.css">
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar">
-    <div class="logo">🏦 Bank Management System</div>
-    <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="#">Customers</a></li>
-        <li><a href="#">Employees</a></li>
-        <li><a href="#">Admin</a></li>
-    </ul>
-</nav>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🏦 Bank Management System</div>
+        <ul class="nav-links">
+            <li><a href="../Dashboard/">Dashboard</a></li>
+            <li><a href="../Balance/" class="active-link">Balance</a></li>
+            <li><a href="../Transactions/">Transactions</a></li>
+            <li><a href="../Accounts/">Accounts</a></li>
+            <li><a href="../Profile/">Profile</a></li>
+        </ul>
+    </nav>
 
-<!-- Main Section -->
-<div class="container-50">
-    <h2>Check Account Balance</h2>
-    <p class="form-description text-center">Select your account number to view your current balance.</p>
+    <!-- Main Section -->
+    <div class="container-50">
+        <h2>Check Account Balance</h2>
+        <p class="form-description text-center">Select your account number to view your current balance.</p>
 
-    <form id="checkBalanceForm">
-        <!-- Account Number Dropdown -->
-        <div class="form-group">
-            <label for="accountNumber">Select Account Number:</label>
-            <select id="accountNumber" onchange="displayBalance()">
-                <option value="" disabled selected>Select Account</option>
-                <option value="123456789012">123456789012</option>
-                <option value="987654321098">987654321098</option>
-                <option value="555555555555">555555555555</option>
-            </select>
-        </div>
+        <form id="checkBalanceForm">
+            <!-- Account Number Dropdown -->
+            <div class="form-group">
+                <label for="accountNumber">Select Account Number:</label>
+                <select id="accountNumber" onchange="displayBalance()">
+                    <option value="" disabled selected>Select Account</option>
+                    <option value="123456789012">123456789012</option>
+                    <option value="987654321098">987654321098</option>
+                    <option value="555555555555">555555555555</option>
+                </select>
+            </div>
 
-        <!-- Current Balance (Read-Only) -->
-        <div class="form-group">
-            <label for="currentBalance">Current Balance:</label>
-            <input type="text" id="currentBalance" readonly placeholder="Balance will appear here">
-        </div>
+            <!-- Current Balance (Read-Only) -->
+            <div class="form-group">
+                <label for="currentBalance">Current Balance:</label>
+                <input type="text" id="currentBalance" readonly placeholder="Balance will appear here">
+            </div>
 
-        <!-- Balance Details -->
-        <p id="balanceMessage" class="message"></p>
-    </form>
-</div>
+            <!-- Balance Details -->
+            <p id="balanceMessage" class="message"></p>
+        </form>
+    </div>
 
-<script>
-    // Demo account balances (in real project, this would come from backend/database)
-    const accountBalances = {
-        "123456789012": 12000,
-        "987654321098": 15450,
-        "555555555555": 9400
-    };
+    <script>
+        // Demo account balances (in real project, this would come from backend/database)
+        const accountBalances = {
+            "123456789012": 12000,
+            "987654321098": 15450,
+            "555555555555": 9400
+        };
 
-    // Function to display balance when account is selected
-    function displayBalance() {
-        const selectedAccount = document.getElementById('accountNumber').value;
-        const balanceField = document.getElementById('currentBalance');
-        const balanceMessage = document.getElementById('balanceMessage');
+        // Function to display balance when account is selected
+        function displayBalance() {
+            const selectedAccount = document.getElementById('accountNumber').value;
+            const balanceField = document.getElementById('currentBalance');
+            const balanceMessage = document.getElementById('balanceMessage');
 
-        if (accountBalances[selectedAccount] !== undefined) {
-            const balance = accountBalances[selectedAccount];
-            balanceField.value = `₹${balance.toFixed(2)}`;
-            balanceMessage.innerText = `Current Balance for Account ${selectedAccount} is ₹${balance.toFixed(2)}`;
-            balanceMessage.style.color = "green";
-        } else {
-            balanceField.value = "";
-            balanceMessage.innerText = "Balance not available.";
-            balanceMessage.style.color = "red";
+            if (accountBalances[selectedAccount] !== undefined) {
+                const balance = accountBalances[selectedAccount];
+                balanceField.value = `₹${balance.toFixed(2)}`;
+                balanceMessage.innerText = `Current Balance for Account ${selectedAccount} is ₹${balance.toFixed(2)}`;
+                balanceMessage.style.color = "green";
+            } else {
+                balanceField.value = "";
+                balanceMessage.innerText = "Balance not available.";
+                balanceMessage.style.color = "red";
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
+
 </html>
