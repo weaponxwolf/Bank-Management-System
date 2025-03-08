@@ -1,0 +1,134 @@
+/* General Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* Full Screen Background */
+body {
+    height: 100vh;
+    background: url('../assets/background.jpg') no-repeat center center/cover;
+    color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Navigation Bar */
+.navbar {
+    width: 100%;
+    padding: 15px 50px;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+}
+
+.nav-links {
+    display: flex;
+    list-style: none;
+}
+
+.nav-links li {
+    margin: 0 15px;
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #ffdd57;
+}
+
+/* Hero Section */
+.hero {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px;
+    background: rgba(0, 0, 0, 0.5);
+    margin-top: 60px;
+}
+
+.hero h1 {
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+/* User Role Buttons */
+.buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+
+.btn {
+    padding: 12px 30px;
+    font-size: 18px;
+    text-decoration: none;
+    border: 2px solid white;
+    color: black;
+    background-color: white;
+    font-weight: bold;
+    transition: 0.3s;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: transparent;
+    color: white;
+}
+
+.customer {
+    background: #4caf50; /* Green */
+    color: white;
+}
+
+.customer:hover {
+    background: transparent;
+    border-color: #4caf50;
+    color: #4caf50;
+}
+
+.employee {
+    background: #2196F3; /* Blue */
+    color: white;
+}
+
+.employee:hover {
+    background: transparent;
+    border-color: #2196F3;
+    color: #2196F3;
+}
+
+.admin {
+    background: #f44336; /* Red */
+    color: white;
+}
+
+.admin:hover {
+    background: transparent;
+    border-color: #f44336;
+    color: #f44336;
+}

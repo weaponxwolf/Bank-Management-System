@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Withdraw Money - Bank Management System</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Deposit Money - Bank Management System</title>
+    <link rel="stylesheet" href="../../css/Customer/deposit.css">
 </head>
 <body>
 
@@ -21,10 +21,10 @@
 
 <!-- Main Section -->
 <div class="container">
-    <h2>Withdraw Money</h2>
-    <p class="form-description">Select your account and enter the withdrawal amount.</p>
+    <h2>Deposit Money</h2>
+    <p class="form-description">Select your account and enter the deposit amount.</p>
 
-    <form id="withdrawForm">
+    <form id="depositForm">
         <!-- Account Number Dropdown -->
         <div class="form-group">
             <label for="accountNumber">Select Account Number:</label>
@@ -42,14 +42,14 @@
             <input type="text" id="currentBalance" readonly placeholder="Balance will appear here">
         </div>
 
-        <!-- Withdrawal Amount -->
+        <!-- Deposit Amount -->
         <div class="form-group">
-            <label for="withdrawAmount">Withdraw Amount (Minimum ₹1000):</label>
-            <input type="number" id="withdrawAmount" placeholder="Enter withdrawal amount" required>
+            <label for="depositAmount">Deposit Amount:</label>
+            <input type="number" id="depositAmount" placeholder="Enter deposit amount" required>
         </div>
 
         <!-- Submit Button -->
-        <button type="button" onclick="withdrawMoney()">Withdraw Money</button>
+        <button type="button" onclick="depositMoney()">Deposit Money</button>
     </form>
 
     <!-- Message Area -->
@@ -72,11 +72,11 @@
         balanceField.value = accountBalances[selectedAccount] || '0';
     }
 
-    // Withdraw money logic
-    function withdrawMoney() {
+    // Deposit money logic
+    function depositMoney() {
         const accountNumber = document.getElementById('accountNumber').value;
         const currentBalance = parseFloat(document.getElementById('currentBalance').value);
-        const withdrawAmount = parseFloat(document.getElementById('withdrawAmount').value);
+        const depositAmount = parseFloat(document.getElementById('depositAmount').value);
 
         const messageEl = document.getElementById('message');
         const updatedBalanceEl = document.getElementById('updatedBalance');
@@ -84,26 +84,20 @@
         messageEl.innerText = '';
         updatedBalanceEl.innerText = '';
 
-        if (isNaN(withdrawAmount) || withdrawAmount < 1000) {
-            messageEl.innerText = "Minimum withdrawal amount is ₹1000.";
+        if (isNaN(depositAmount) || depositAmount <= 0) {
+            messageEl.innerText = "Please enter a valid deposit amount.";
             messageEl.style.color = "red";
             return;
         }
 
-        const remainingBalance = currentBalance - withdrawAmount;
-
-        if (remainingBalance < 500) {
-            messageEl.innerText = "Minimum balance should be ₹500 after withdrawal.";
-            messageEl.style.color = "red";
-            return;
-        }
+        const updatedBalance = currentBalance + depositAmount;
 
         // Simulate update (in actual implementation, balance would be updated in backend)
-        accountBalances[accountNumber] = remainingBalance;
+        accountBalances[accountNumber] = updatedBalance;
 
-        messageEl.innerText = "Withdrawal Successful!";
+        messageEl.innerText = "Deposit Successful!";
         messageEl.style.color = "green";
-        updatedBalanceEl.innerText = `Updated Balance: ₹${remainingBalance.toFixed(2)}`;
+        updatedBalanceEl.innerText = `Updated Balance: ₹${updatedBalance.toFixed(2)}`;
     }
 </script>
 
