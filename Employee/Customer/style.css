@@ -63,7 +63,7 @@ body {
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
     padding: 30px;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 20px auto;
 }
 .card {
@@ -96,12 +96,20 @@ body {
     opacity: 0.8;
 }
 
+.top-card{
+    background-color: white;
+    max-width: 1400px;
+    margin: 20px auto;
+    font-size: 1.2rem;
+    padding: 1rem;
+}
+
 .table-container {
     width: 90%;
-    max-width: 1200px;
+    max-width: 1400px;
     margin: 20px auto;
     background-color: white;
-    border-radius: 0.5rem;
+    /* border-radius: 0.5rem; */
     box-shadow: 0 21x 1px rgba(0,0,0,0.1);
     overflow: hidden;
 }
@@ -112,7 +120,7 @@ table {
     
 }
 thead {
-    background-color: #4a90e2;
+    background-color: #6a5acd;
     color: white;
 }
 th, td {
@@ -156,4 +164,8 @@ tbody tr:hover {
     th, td {
         padding: 10px;
     }
+}
+
+.view-profile{
+    text-align: center;
 }
