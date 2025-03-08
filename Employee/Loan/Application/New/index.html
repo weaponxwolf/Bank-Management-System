@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Loan Management System - Employee Dashboard</title>
+    <link rel="stylesheet" href="../../../../css/Employee/loan.css">
+    <link rel="stylesheet" href="../../../../css/Employee/common.css">
+</head>
+
+<body>
+
+    <nav class="navbar">
+        <div class="logo">🏦 Bank Management System</div>
+        <ul class="nav-links">
+            <li><a href="#">Dashboard</a></li>
+            <li><a href="#">Services</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </nav>
+
+    <div class="menu-card">
+        <a href="../../" style="text-decoration: none;">
+            < Back </a>
+    </div>
+    
+    <div class="container">
+        <!-- Main Content Area -->
+        <main class="main-content">
+
+
+            <!-- Loan Application Form -->
+            <section class="loan-form">
+                <h2>New Loan Application</h2>
+                <form>
+                    <div class="form-row">
+                        <label>Applicant Name</label>
+                        <input type="text" placeholder="Enter applicant name">
+                    </div>
+                    <div class="form-row">
+                        <label>Loan Amount</label>
+                        <input type="number" placeholder="Enter loan amount">
+                    </div>
+                    <div class="form-row">
+                        <label>Loan Type</label>
+                        <select>
+                            <option>Home Loan</option>
+                            <option>Car Loan</option>
+                            <option>Personal Loan</option>
+                        </select>
+                    </div>
+                    <div class="form-row">
+                        <label>Application Date</label>
+                        <input type="date">
+                    </div>
+                    <button type="submit">Submit Application</button>
+                </form>
+            </section>
+
+
+        </main>
+    </div>
+
+</body>
+
+</html>

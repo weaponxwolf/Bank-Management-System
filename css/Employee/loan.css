@@ -1,74 +1,17 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Poppins', sans-serif;
+
+.container {
+    margin: 0px auto;
+    width: 75%;
 }
 
-body {
-    background-color: #f0f4f9;
-    display: flex;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.dashboard-container {
-    display: flex;
-    width: 100%;
-}
-
-/* Sidebar */
-.sidebar {
-    width: 260px;
-    background: linear-gradient(135deg, #4a90e2, #003399);
-    color: white;
-    padding: 30px 15px;
-    display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.logo {
-    font-size: 24px;
-    font-weight: 600;
-    margin-bottom: 15px;
-    text-align: center;
-}
-
-.sidebar nav {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-}
-
-.sidebar nav a {
-    color: white;
-    text-decoration: none;
-    padding: 12px 15px;
-    background: rgba(255, 255, 255, 0.15);
-    border-radius: 6px;
-    transition: all 0.3s ease;
-}
-
-.sidebar nav a:hover {
-    background: rgba(255, 255, 255, 0.3);
-    transform: translateX(5px);
-}
-
-.sidebar nav a.active {
-    background: rgba(255, 255, 255, 0.3);
-    font-weight: bold;
-}
-
-/* Main Content */
 .main-content {
     flex: 1;
     padding: 30px;
     overflow-y: auto;
     background: #f9fbff;
+    margin-top: 1rem;
 }
 
-/* Header */
 .header {
     margin-bottom: 25px;
 }
@@ -113,20 +56,23 @@ body {
 .stat-card p {
     font-size: 24px;
     font-weight: bold;
-    color: #003399;
+    color: #6a5acd;
 }
 
-/* Loan Form */
 .loan-form {
     background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    margin-bottom: 30px;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    margin-bottom: 1.5rem;
+    margin-top: 1rem;
+    max-width: 75%;
+    margin: 1rem auto;
+    font-size: large;
 }
 
 .form-row {
-    margin-bottom: 15px;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
 }
 
 .form-row label {
@@ -160,12 +106,10 @@ button:hover {
 /* Loan Table */
 .loan-table {
     background: white;
-    padding: 25px;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
 }
 
 table {
+    margin-top: 1rem;
     width: 100%;
     border-collapse: collapse;
 }
@@ -177,7 +121,7 @@ table th, table td {
 }
 
 table th {
-    background: #003399;
+    background: #6a5acd;
     color: white;
 }
 
