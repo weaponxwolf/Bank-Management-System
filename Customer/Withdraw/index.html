@@ -1,111 +1,117 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Withdraw Money - Bank Management System</title>
     <link rel="stylesheet" href="../../css/Customer/withdraw.css">
+    <link rel="stylesheet" href="../../css/Customer/common.css">
 </head>
+
 <body>
 
-<!-- Navbar -->
-<nav class="navbar">
-    <div class="logo">🏦 Bank Management System</div>
-    <ul class="nav-links">
-        <li><a href="../index.html">Home</a></li>
-        <li><a href="#">Customers</a></li>
-        <li><a href="#">Employees</a></li>
-        <li><a href="#">Admin</a></li>
-    </ul>
-</nav>
+    <!-- Navbar -->
+    <nav class="navbar">
+        <div class="logo">🏦 Bank Management System</div>
+        <ul class="nav-links">
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="#">Customers</a></li>
+            <li><a href="#">Employees</a></li>
+            <li><a href="#">Admin</a></li>
+        </ul>
+    </nav>
 
-<!-- Main Section -->
-<div class="container">
-    <h2>Withdraw Money</h2>
-    <p class="form-description">Select your account and enter the withdrawal amount.</p>
+    <!-- Main Section -->
+    <div class="container-50">
+        <h2>Withdraw Money</h2>
+        <p class="form-description text-center">Select your account and enter the withdrawal amount.</p>
 
-    <form id="withdrawForm">
-        <!-- Account Number Dropdown -->
-        <div class="form-group">
-            <label for="accountNumber">Select Account Number:</label>
-            <select id="accountNumber" onchange="populateBalance()">
-                <option value="" disabled selected>Select Account</option>
-                <option value="123456789012">123456789012</option>
-                <option value="987654321098">987654321098</option>
-                <option value="555555555555">555555555555</option>
-            </select>
-        </div>
+        <form id="withdrawForm">
+            <!-- Account Number Dropdown -->
+            <div class="form-group">
+                <label for="accountNumber">Select Account Number:</label>
+                <select id="accountNumber" onchange="populateBalance()">
+                    <option value="" disabled selected>Select Account</option>
+                    <option value="123456789012">123456789012</option>
+                    <option value="987654321098">987654321098</option>
+                    <option value="555555555555">555555555555</option>
+                </select>
+            </div>
 
-        <!-- Current Balance (Read-Only) -->
-        <div class="form-group">
-            <label for="currentBalance">Current Balance:</label>
-            <input type="text" id="currentBalance" readonly placeholder="Balance will appear here">
-        </div>
+            <!-- Current Balance (Read-Only) -->
+            <div class="form-group">
+                <label for="currentBalance">Current Balance:</label>
+                <input type="text" id="currentBalance" readonly placeholder="Balance will appear here">
+            </div>
 
-        <!-- Withdrawal Amount -->
-        <div class="form-group">
-            <label for="withdrawAmount">Withdraw Amount (Minimum ₹1000):</label>
-            <input type="number" id="withdrawAmount" placeholder="Enter withdrawal amount" required>
-        </div>
+            <!-- Withdrawal Amount -->
+            <div class="form-group">
+                <label for="withdrawAmount">Withdraw Amount (Minimum ₹1000):</label>
+                <input type="number" id="withdrawAmount" placeholder="Enter withdrawal amount" required>
+            </div>
 
-        <!-- Submit Button -->
-        <button type="button" onclick="withdrawMoney()">Withdraw Money</button>
-    </form>
+            <!-- Submit Button -->
+            <div id="withdrawButton" class="text-center">
+                <button type="button" onclick="withdrawMoney()">Withdraw Money</button>
+            </div>
+        </form>
 
-    <!-- Message Area -->
-    <p id="message" class="message"></p>
-    <p id="updatedBalance" class="updated-balance"></p>
-</div>
+        <!-- Message Area -->
+        <p id="message" class="message"></p>
+        <p id="updatedBalance" class="updated-balance"></p>
+    </div>
 
-<script>
-    // Demo account balances
-    const accountBalances = {
-        "123456789012": 10000,
-        "987654321098": 15000,
-        "555555555555": 8000
-    };
+    <script>
+        // Demo account balances
+        const accountBalances = {
+            "123456789012": 10000,
+            "987654321098": 15000,
+            "555555555555": 8000
+        };
 
-    // Populate balance based on selected account
-    function populateBalance() {
-        const selectedAccount = document.getElementById('accountNumber').value;
-        const balanceField = document.getElementById('currentBalance');
-        balanceField.value = accountBalances[selectedAccount] || '0';
-    }
-
-    // Withdraw money logic
-    function withdrawMoney() {
-        const accountNumber = document.getElementById('accountNumber').value;
-        const currentBalance = parseFloat(document.getElementById('currentBalance').value);
-        const withdrawAmount = parseFloat(document.getElementById('withdrawAmount').value);
-
-        const messageEl = document.getElementById('message');
-        const updatedBalanceEl = document.getElementById('updatedBalance');
-
-        messageEl.innerText = '';
-        updatedBalanceEl.innerText = '';
-
-        if (isNaN(withdrawAmount) || withdrawAmount < 1000) {
-            messageEl.innerText = "Minimum withdrawal amount is ₹1000.";
-            messageEl.style.color = "red";
-            return;
+        // Populate balance based on selected account
+        function populateBalance() {
+            const selectedAccount = document.getElementById('accountNumber').value;
+            const balanceField = document.getElementById('currentBalance');
+            balanceField.value = accountBalances[selectedAccount] || '0';
         }
 
-        const remainingBalance = currentBalance - withdrawAmount;
+        // Withdraw money logic
+        function withdrawMoney() {
+            const accountNumber = document.getElementById('accountNumber').value;
+            const currentBalance = parseFloat(document.getElementById('currentBalance').value);
+            const withdrawAmount = parseFloat(document.getElementById('withdrawAmount').value);
 
-        if (remainingBalance < 500) {
-            messageEl.innerText = "Minimum balance should be ₹500 after withdrawal.";
-            messageEl.style.color = "red";
-            return;
+            const messageEl = document.getElementById('message');
+            const updatedBalanceEl = document.getElementById('updatedBalance');
+
+            messageEl.innerText = '';
+            updatedBalanceEl.innerText = '';
+
+            if (isNaN(withdrawAmount) || withdrawAmount < 1000) {
+                messageEl.innerText = "Minimum withdrawal amount is ₹1000.";
+                messageEl.style.color = "red";
+                return;
+            }
+
+            const remainingBalance = currentBalance - withdrawAmount;
+
+            if (remainingBalance < 500) {
+                messageEl.innerText = "Minimum balance should be ₹500 after withdrawal.";
+                messageEl.style.color = "red";
+                return;
+            }
+
+            // Simulate update (in actual implementation, balance would be updated in backend)
+            accountBalances[accountNumber] = remainingBalance;
+
+            messageEl.innerText = "Withdrawal Successful!";
+            messageEl.style.color = "green";
+            updatedBalanceEl.innerText = `Updated Balance: ₹${remainingBalance.toFixed(2)}`;
         }
-
-        // Simulate update (in actual implementation, balance would be updated in backend)
-        accountBalances[accountNumber] = remainingBalance;
-
-        messageEl.innerText = "Withdrawal Successful!";
-        messageEl.style.color = "green";
-        updatedBalanceEl.innerText = `Updated Balance: ₹${remainingBalance.toFixed(2)}`;
-    }
-</script>
+    </script>
 
 </body>
+
 </html>
