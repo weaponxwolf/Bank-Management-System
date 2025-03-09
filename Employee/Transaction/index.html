@@ -1,113 +1,118 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Employee Transaction Management</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
-<div class="navbar">
-    <div class="logo">🏦 Bank Management System</div>
-    <ul class="nav-links">
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Transactions</a></li>
-        <li><a href="#">Logout</a></li>
-    </ul>
-</div>
+    <div class="navbar">
+        <div class="logo">🏦 Bank Management System</div>
+        <ul class="nav-links">
+            <li><a href="../">Dashboard</a></li>
+            <li><a href="../Loan/">Loans</a></li>
+            <li><a href="../Customer/">Customers</a></li>
+            <li><a href="../Profile/">Profile</a></li>
+            <li><a href="#">Logout</a></li>
+        </ul>
+    </div>
 
-<div class="container">
-    <div class="form-card">
-        <h2>💼 Employee Transaction Management</h2>
-        <p class="sub-title">Capture and Manage Transaction Details for Customers.</p>
+    <div class="container">
+        <div class="form-card">
+            <h2>💼 Employee Transaction Management</h2>
+            <p class="sub-title">Capture and Manage Transaction Details for Customers.</p>
 
-        <form id="transactionForm">
+            <form id="transactionForm">
 
-            <div class="input-grid">
-                <div class="form-group">
-                    <label>Transaction ID</label>
-                    <input type="text" id="transactionId" placeholder="Enter Transaction ID" required>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Transaction ID</label>
+                        <input type="text" id="transactionId" placeholder="Enter Transaction ID" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Customer SSN ID</label>
+                        <input type="text" id="customerSsnId" placeholder="Enter Customer SSN ID" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Customer SSN ID</label>
-                    <input type="text" id="customerSsnId" placeholder="Enter Customer SSN ID" required>
-                </div>
-            </div>
 
-            <div class="input-grid">
-                <div class="form-group">
-                    <label>Customer Name</label>
-                    <input type="text" id="customerName" placeholder="Enter Customer Name" required>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Customer Name</label>
+                        <input type="text" id="customerName" placeholder="Enter Customer Name" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Account ID</label>
+                        <input type="text" id="accountId" placeholder="Enter Account ID" required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>Account ID</label>
-                    <input type="text" id="accountId" placeholder="Enter Account ID" required>
-                </div>
-            </div>
 
-            <div class="input-grid">
-                <div class="form-group">
-                    <label>Aadhaar Card No.</label>
-                    <input type="text" id="aadhaarNo" placeholder="Enter Aadhaar No." required>
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Aadhaar Card No.</label>
+                        <input type="text" id="aadhaarNo" placeholder="Enter Aadhaar No." required>
+                    </div>
+                    <div class="form-group">
+                        <label>PAN Card No.</label>
+                        <input type="text" id="panNo" placeholder="Enter PAN No." required>
+                    </div>
                 </div>
-                <div class="form-group">
-                    <label>PAN Card No.</label>
-                    <input type="text" id="panNo" placeholder="Enter PAN No." required>
-                </div>
-            </div>
 
-            <div class="form-group">
-                <label>Address</label>
-                <textarea id="address" placeholder="Enter Address" required></textarea>
-            </div>
-
-            <div class="input-grid">
                 <div class="form-group">
-                    <label>Date</label>
-                    <input type="date" id="transactionDate" required>
+                    <label>Address</label>
+                    <textarea id="address" placeholder="Enter Address" required></textarea>
                 </div>
-                <div class="form-group">
-                    <label>Contact Number</label>
-                    <input type="text" id="contactNumber" placeholder="Enter Contact Number" required>
-                </div>
-            </div>
 
-            <div class="input-grid">
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Date</label>
+                        <input type="date" id="transactionDate" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Contact Number</label>
+                        <input type="text" id="contactNumber" placeholder="Enter Contact Number" required>
+                    </div>
+                </div>
+
+                <div class="input-grid">
+                    <div class="form-group">
+                        <label>Mode of Transaction</label>
+                        <select id="modeOfTransaction" required>
+                            <option value="">Select Mode</option>
+                            <option value="Cash">Cash</option>
+                            <option value="Cheque">Cheque</option>
+                            <option value="Online Transfer">Online Transfer</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Amount</label>
+                        <input type="number" id="amount" placeholder="Enter Amount" required>
+                    </div>
+                </div>
+
                 <div class="form-group">
-                    <label>Mode of Transaction</label>
-                    <select id="modeOfTransaction" required>
-                        <option value="">Select Mode</option>
-                        <option value="Cash">Cash</option>
-                        <option value="Cheque">Cheque</option>
-                        <option value="Online Transfer">Online Transfer</option>
+                    <label>Credit/Debit</label>
+                    <select id="transactionType" required>
+                        <option value="">Select Type</option>
+                        <option value="Credit">Credit</option>
+                        <option value="Debit">Debit</option>
                     </select>
                 </div>
-                <div class="form-group">
-                    <label>Amount</label>
-                    <input type="number" id="amount" placeholder="Enter Amount" required>
+
+                <div class="form-group submit-button">
+                    <button type="button" onclick="submitTransaction()">💾 Submit Transaction</button>
                 </div>
-            </div>
 
-            <div class="form-group">
-                <label>Credit/Debit</label>
-                <select id="transactionType" required>
-                    <option value="">Select Type</option>
-                    <option value="Credit">Credit</option>
-                    <option value="Debit">Debit</option>
-                </select>
-            </div>
-
-            <div class="form-group submit-button">
-                <button type="button" onclick="submitTransaction()">💾 Submit Transaction</button>
-            </div>
-
-            <p class="success-message" id="successMessage">✅ Transaction recorded successfully!</p>
-        </form>
+                <p class="success-message" id="successMessage">✅ Transaction recorded successfully!</p>
+            </form>
+        </div>
     </div>
-</div>
 
-<script src="script.js"></script>
+    <script src="script.js"></script>
 
 </body>
+
 </html>
